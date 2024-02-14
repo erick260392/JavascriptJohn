@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // const animal = {
+        //     nombre: 'snoopy',
+        //     sonar() {
+        //         console.log('hago sonidos por que estoy vivo')
+        //     }
+        // }
+
+        // console.log(animal);
+
+        // const animal2 = {
+        //     nombre: 'Lola Bunny',
+        //     sonar() {
+        //         console.log('hago sonidos por que estoy vivo')
+        //     }
+        // }
+
+        // console.log(animal2);
+
+        // funcion constructura
+
+
+        // function Animal(nombre, genero) {
+
+        //     // Atributos
+        //     this.nombre = nombre;
+        //     this.genero = genero;
+
+        //     // Metodos
+        //     // this.sonar = function () {
+        //     //     console.log('hago sonidos por que estoy vivo')
+        //     // } 
+
+
+        // }
+
+
+        // funcion Constructura donde Asignamos los metodos al prototipo
+        function Animal(nombre, genero) {
+
+            // Atributos
+            this.nombre = nombre;
+            this.genero = genero;
+
+
+        }
+
+        // Metodos agregados al prototipo de funcion Constructura
+
+        Animal.prototype.saludar = function () {
+
+            console.log(`hola me llamo ${this.nombre}`)
+        };
+
+        Animal.prototype.sonar = function () {
+
+            console.log(`hago sonidos por que estoy vivo`)
+
+        };
+
+
+        //Herencia prototipica
+
+        function Perro(nombre, genero, tamanio) {
+            this.super = Animal;
+            this.super(nombre, genero);
+            this.tamanio = tamanio;
+
+        }
+
+        //Perro esta heredando de Animal
+        Perro.prototype = new Animal();
+        Perro.prototype.constructor = Perro;
+
+        //Sobreescritura de metodos de prototipo padre en el hijo
+
+        Perro.prototype.sonar = function(){
+            console.log('soy un perro y mi sonido es un ladrido');
+        }
+
+        Perro.prototype.ladrar = function(){
+            console.log('Guuua Guuua !!!');
+        }
+
+        const snoopy = new Perro('Snoopy', 'macho' ,'mediano');
+
+        const lolaBunny = new Animal('Lola Bunny', 'hembra');
+
+        console.log(snoopy);
+        console.log(lolaBunny);
+
+    </script>
+
+
+</body>
+
+</html>
