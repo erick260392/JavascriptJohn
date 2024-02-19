@@ -48,58 +48,113 @@
 
 
         // funcion Constructura donde Asignamos los metodos al prototipo
-        function Animal(nombre, genero) {
+        // function Animal(nombre, genero) {
 
-            // Atributos
-            this.nombre = nombre;
-            this.genero = genero;
+        //     // Atributos
+        //     this.nombre = nombre;
+        //     this.genero = genero;
 
 
-        }
+        // }
 
-        // Metodos agregados al prototipo de funcion Constructura
+        // // Metodos agregados al prototipo de funcion Constructura
 
-        Animal.prototype.saludar = function () {
+        // Animal.prototype.saludar = function () {
 
-            console.log(`hola me llamo ${this.nombre}`)
+        //     console.log(`hola me llamo ${this.nombre}`)
+        // };
+
+        // Animal.prototype.sonar = function () {
+
+        //     console.log(`hago sonidos por que estoy vivo`)
+
+        // };
+
+
+        // //Herencia prototipica
+
+        // function Perro(nombre, genero, tamanio) {
+        //     this.super = Animal;
+        //     this.super(nombre, genero);
+        //     this.tamanio = tamanio;
+
+        // }
+
+        // //Perro esta heredando de Animal
+        // Perro.prototype = new Animal();
+        // Perro.prototype.constructor = Perro;
+
+        // //Sobreescritura de metodos de prototipo padre en el hijo
+
+        // Perro.prototype.sonar = function () {
+        //     console.log('soy un perro y mi sonido es un ladrido');
+        // }
+
+        // Perro.prototype.ladrar = function () {
+        //     console.log('Guuua Guuua !!!');
+        // }
+
+        // const snoopy = new Perro('Snoopy', 'macho', 'mediano');
+
+        // const lolaBunny = new Animal('Lola Bunny', 'hembra');
+
+        // console.log(snoopy);
+        // console.log(lolaBunny);
+
+        // Programacion Orientada a Objetos (basada en clases)
+
+        // funcion Constructura donde Asignamos los metodos al prototipo
+        class Animal {
+            constructor(nombre, genero) {
+                // Atributos
+                this.nombre = nombre;
+                this.genero = genero;
+            }
+
+            // Metodos
+
+            sonar() {
+                console.log('hago sonidos por que estoy vivo');
+            }
+
+            saludar() {
+                console.log(`Hola me llamo ${this.nombre}`)
+            }
         };
 
-        Animal.prototype.sonar = function () {
-
-            console.log(`hago sonidos por que estoy vivo`)
-
-        };
 
 
-        //Herencia prototipica
+        class Perro extends Animal {
+            constructor(nombre, genero, tamanio) {
+                super(nombre, genero);
+                this.tamanio = tamanio;
 
-        function Perro(nombre, genero, tamanio) {
-            this.super = Animal;
-            this.super(nombre, genero);
-            this.tamanio = tamanio;
+            }
 
+            sonar(){
+                console.log('soy un perro y mi sonido es un Ladrido');
+            };
+
+            ladrar(){
+                console.log('Guuua Guuua');
+            }
         }
 
-        //Perro esta heredando de Animal
-        Perro.prototype = new Animal();
-        Perro.prototype.constructor = Perro;
+        const mimi = new Animal('Mimi', 'Hembra');
+        const scooby = new Perro('Scooby', 'Macho','Gigante');
 
-        //Sobreescritura de metodos de prototipo padre en el hijo
+        console.log(mimi);
+        console.log(scooby);
 
-        Perro.prototype.sonar = function(){
-            console.log('soy un perro y mi sonido es un ladrido');
-        }
 
-        Perro.prototype.ladrar = function(){
-            console.log('Guuua Guuua !!!');
-        }
+        // Herencia Basada en clases
 
-        const snoopy = new Perro('Snoopy', 'macho' ,'mediano');
+        mimi.saludar();
+        mimi.sonar();
+        scooby.saludar();
+        scooby.sonar();
+        scooby.ladrar();
 
-        const lolaBunny = new Animal('Lola Bunny', 'hembra');
-
-        console.log(snoopy);
-        console.log(lolaBunny);
 
     </script>
 
